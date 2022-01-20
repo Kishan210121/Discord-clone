@@ -29,15 +29,15 @@ function Header() {
       </section> 
       <section className="header_bottom flex justify-center bg-black">
       <div className="container relative h-auto text-white flex lg:justify-center lg:px-20 py-20   ">
-        <div className="data_container w-2/3 flex-wrap text-left lg:text-center lg:flex-nowrap">
-          <h1 className="font-bold text-7xl">IMAGIN A PLACE...</h1>
-          <p className="my-8 lg:mx-8 text-bold">...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</p>
-          <button className="text-black py-4 mr-10 rounded-full text-center bg-white px-12 w-fit  mb-7 md:mb-10 lg:mb-10 lg:bg-orange-600">Download for window</button>
-          <button className="py-4 rounded-full text-center bg-neutral-700 px-8 w-fit ">Open discord in your browser</button>
+        <div className="data_container z-10 w-2/3 flex-wrap text-left lg:text-center lg:flex-nowrap">
+          <h1 className="font-bold text-7xl lg:mt-8 lg:mb-16">IMAGIN A PLACE...</h1>
+          <p className="my-8 text-xl lg:mx-8 text-bold lg:mt-12 lg:mb-12">...where you can belong to a school club, a gaming group, or a worldwide art community. Where just you and a handful of friends can spend time together. A place that makes it easy to talk every day and hang out more often.</p>
+          <button className="text-black lg:mb-16mt-12 py-4 mr-10 rounded-full text-center bg-white px-12 w-fit  mb-7 md:mb-10 lg:mb-10 lg:bg-orange-600">Download for window</button>
+          <button className="py-4 rounded-full lg:mt-12 text-center bg-neutral-700 px-8 w-fit ">Open discord in your browser</button>
         </div>
         </div>
         </section>
-        <svg className="w-9/12 -mb-4 -ml-4 lg:w-3/5 block lg:absolute lg:-right-1/3 bottom-0" width="615" height="360" viewBox="0 0 615 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="w-9/12 h-full lg:h-1/2  mb-0 -ml-4 lg:w-3/5 block lg:absolute lg:-right-1/3 bottom-0" width="615" height="360" viewBox="0 0 615 360" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M614.2 359.4H449.3V307.9C487.7 271.3 531.5 296.5 534.4 323.7C578.1 295.3 619.2 318 614.2 359.4Z" fill="#404EED"/>
     <path d="M449.301 223.5H13.7007V359.4H449.301V223.5Z" fill="#5865F2"/>
     <path d="M13.7007 265.5L449.301 230.4V223.5H13.7007V265.5Z" fill="#4B59F2"/>
@@ -231,7 +231,7 @@ function Header() {
     <path d="M47.1 319.5C47.1 321.94 48.0694 324.28 49.7947 326.005C51.52 327.731 53.8601 328.7 56.3001 328.7C58.7401 328.7 61.0801 327.731 62.8054 326.005C64.5308 324.28 65.5 321.94 65.5 319.5C65.4881 318.862 65.4212 318.226 65.3001 317.6H47.3001C47.1288 318.218 47.0612 318.86 47.1 319.5Z" fill="#29CC7A"/>
     <path d="M38 334.1H53C52.1496 332.903 51.025 331.927 49.7202 331.253C48.4154 330.58 46.9684 330.228 45.5 330.228C44.0316 330.228 42.5846 330.58 41.2798 331.253C39.975 331.927 38.8504 332.903 38 334.1Z" fill="#29CC7A"/>
         </svg>
-        <svg className="hidden bottom-0 -left-1/3 lg:absolute lg:block" width="689" height="352" viewBox="0 0 689 352" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg className="hidden bottom-0  -left-1/3 lg:absolute lg:block" width="689" height="352" viewBox="0 0 689 352" fill="none" xmlns="http://www.w3.org/2000/svg">
     <path d="M291.399 351.9H18.0994C6.79941 341.8 -0.100599 330.1 0.999401 319.3C3.2994 296 39.9994 292.6 75.5994 309.4L82.5994 312.9C83.7793 308.614 85.6724 304.557 88.1994 300.9C105.999 274.8 146.199 272.3 172.199 291.4C175.065 293.495 177.742 295.838 180.199 298.4C183.695 293.567 187.683 289.109 192.099 285.1C216.199 263.3 244.799 258.6 255.699 272C265.299 283.8 257.899 306.5 239.699 324.4C239.699 324.4 293.499 325.7 291.399 351.9Z" fill="#404EED"/>
     <path d="M629.4 351.4C607.3 305.8 594.9 251.2 594.9 251.2L593.9 245.9L549.4 251.2V351.4H629.4Z" fill="#2835BD"/>
     <path d="M619.8 351.4C600.4 311.4 589.6 263.5 589.6 263.5L587 250.1L549.7 263.5V351.4H619.8Z" fill="black"/>
