@@ -1,10 +1,11 @@
 import Header from "./Components/Header";
-import Information from "./Components/Information";
+import HandelInformation from "./Components/HandelInformation"
 function App() {
   return (
     <>
       <Header />
-      <Information/>
+      <HandelInformation/>
+
     </>
   );
 }
