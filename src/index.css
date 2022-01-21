@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer components {
+  /* This won't be included in your compiled CSS unless you actually use it */
+  .HomelastButton {
+    /* background-color: blue; 
+    border-radius: 3rem;
+    padding: 1rem 6rem;
+    margin: auto;
+    display: block;
+    margin: auto;
+     margin-top: 1rem; */
+  }
+}
