@@ -1,6 +1,11 @@
 import React from "react";
 import { MenuIcon } from '@heroicons/react/solid'
+// import {usehistory} from "react-router-dom"
+// import { auth,provider } from "./firebase";
+import { useAuthState } from 'react-firebase-hooks/auth';
 function Header() {
+  // const[user]=useAuthState(auth);
+  // const history=usehistory();
   return (
     <>
       <header className="relative overflow-hidden bg-black">

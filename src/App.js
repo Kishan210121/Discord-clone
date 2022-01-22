@@ -14,7 +14,7 @@ function App() {
           <Route exect path="/" element={<Header />} />
           <Route path="/karan" element={<HandelInformation />} />
         </Routes>
-    </BrowserRouter>
+    ``</BrowserRouter>
     </>
   );
 }
