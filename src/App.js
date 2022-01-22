@@ -1,11 +1,20 @@
 import Header from "./Components/Header";
-import HandelInformation from "./Components/HandelInformation"
+import HandelInformation from "./Components/HandelInformation";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
+} from "react-router-dom";
 function App() {
   return (
     <>
-      <Header />
-      <HandelInformation/>
-
+      <BrowserRouter>
+        <Routes>
+          <Route exect path="/" element={<Header />} />
+          <Route path="/karan" element={<HandelInformation />} />
+        </Routes>
+    </BrowserRouter>
     </>
   );
 }
