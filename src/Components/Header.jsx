@@ -1,30 +1,46 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import { MenuIcon } from "@heroicons/react/solid";
 import { auth, provider } from "../firebase";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup,onAuthStateChanged  } from "firebase/auth";
 function Header() {
-  const [user, setuser] = useState(null);
-  // const history=usehistory();
+  const [myuser, setmyuser] = useState(null);
+  // const [loading,setloading]=useState(true);
+  let navigate = useNavigate();
+
   const signIn = (e) => {
     e.preventDefault();
     try {
       signInWithPopup(auth, provider).then((details) => {
         console.log(details);
-        setuser(details);
-        console.log("user value after", user);
-        // setkaran("karan");
+        navigate("/karan");
       });
     } catch (error) {
       console.log(error);
     } 
   };
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+    if (user) {
+      // User is signed in, see docs for a list of available properties
+      setmyuser(user);   
+      // setloading(false);
+      console.log(user.uid);
+    } else {
+      // User is signed out
+      console.log("uid errror")
+      setmyuser(null);
+      navigate("/");
+    }
+    console.log(myuser)
+  });
+  }, []);
   const signout = () => {
     console.log("signout");
     try {
       auth.signOut().then(() => {
         console.log("signout is succesfull");
-        setuser(null);
-        console.log("user value", user);
+        setmyuser(null);
       });
     } catch (error) {
       console.log(error);
@@ -66,7 +82,7 @@ function Header() {
               </ul>
             </div>
             <div className="space-x-10 flex">
-              {user == null ? (
+              {myuser == null? (
                 <button
                   className="px-3 bg-white text-black rounded-full"
                   onClick={signIn}
@@ -83,9 +99,7 @@ function Header() {
               )}
               <MenuIcon
                 className="flex lg:hidden"
-                onClick={() => {
-                  console.log(user);
-                }}
+                
               />
             </div>
           </nav>
