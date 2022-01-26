@@ -1,46 +1,38 @@
 import React, { useState,useEffect } from "react";
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { MenuIcon } from "@heroicons/react/solid";
 import { auth, provider } from "../firebase";
-import { signInWithPopup,onAuthStateChanged  } from "firebase/auth";
+import { signInWithPopup} from "firebase/auth";
+import HandelInformation from "./HandelInformation"
+import {Link} from "react-router-dom"
 function Header() {
-  const [myuser, setmyuser] = useState(null);
-  // const [loading,setloading]=useState(true);
+  const [user, loading, error] = useAuthState(auth);
   let navigate = useNavigate();
-
   const signIn = (e) => {
     e.preventDefault();
     try {
       signInWithPopup(auth, provider).then((details) => {
-        console.log(details);
         navigate("/karan");
       });
     } catch (error) {
       console.log(error);
     } 
   };
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-    if (user) {
-      // User is signed in, see docs for a list of available properties
-      setmyuser(user);   
-      // setloading(false);
-      console.log(user.uid);
-    } else {
-      // User is signed out
-      console.log("uid errror")
-      setmyuser(null);
-      navigate("/");
-    }
-    console.log(myuser)
-  });
-  }, []);
+  if(loading){
+        console.log("loading is in progress",loading);
+      }
+      if(error){
+        console.log("error while getting usser",error);
+      }
+      if(user){
+        console.log("this is my user",user)
+      }
   const signout = () => {
     console.log("signout");
     try {
       auth.signOut().then(() => {
         console.log("signout is succesfull");
-        setmyuser(null);
       });
     } catch (error) {
       console.log(error);
@@ -82,13 +74,15 @@ function Header() {
               </ul>
             </div>
             <div className="space-x-10 flex">
-              {myuser == null? (
-                <button
-                  className="px-3 bg-white text-black rounded-full"
-                  onClick={signIn}
-                >
-                  Sign in
-                </button>
+              {user == null? (
+                <>
+                <Link className="px-3 bg-white text-black rounded-full"
+                to="/signin">Sign in</Link>
+                <Link className="px-3 bg-white text-black rounded-full"
+                to="/signup">Sign up</Link>
+                </>
+                
+                
               ) : (
                 <button
                   className="px-3 bg-white text-black rounded-full"
@@ -2040,6 +2034,7 @@ function Header() {
           />
         </svg>
       </header>
+      <HandelInformation/>
     </>
   );
 }

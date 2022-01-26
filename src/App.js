@@ -1,6 +1,8 @@
+
 import Header from "./Components/Header";
-import HandelInformation from "./Components/HandelInformation";
-import ChatHome from "./Components/ChatHome"
+import Home from "./Components/Home"
+import Signup from "./Components/Signup";
+import Signin from "./Components/SignIn";
 import {
   BrowserRouter,
   Routes,
@@ -11,11 +13,12 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route exect path="/" >
-            <Header/>
-            <HandelInformation/>
+          <Route exect path="/" element={<Header/>} >
+            
           </Route>
-          <Route path="/karan" element={<ChatHome />} />
+          <Route exect path="/karan" element={<Home/>}/>
+          <Route exect path="/signup" element={<Signup/>}/>
+          <Route exect path="/signin" element={<Signin/>}/>
         </Routes>
     ``</BrowserRouter>
     </>
