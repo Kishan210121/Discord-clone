@@ -1,34 +1,19 @@
-import React  from "react";
-import { useAuthState } from 'react-firebase-hooks/auth';
+import React, { useEffect } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 // import { useNavigate } from 'react-router-dom';
 import { MenuIcon } from "@heroicons/react/solid";
-import { auth } from "../firebase";
+import { auth, db } from "../firebase";
 // import { provider } from "../firebase";
 // import { signInWithPopup} from "firebase/auth";
-import HandelInformation from "./HandelInformation"
-import {Link} from "react-router-dom"
+import { doc, getDoc } from "firebase/firestore";
+import HandelInformation from "./HandelInformation";
+import { Link } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { setUser, selectCount } from "../features/user/userSlice";
 function Header() {
-  const [user, loading, error] = useAuthState(auth);
-  // let navigate = useNavigate();
-  // const signIn = (e) => {
-  //   e.preventDefault();
-  //   try {
-  //     signInWithPopup(auth, provider).then((details) => {
-  //       navigate("/karan");
-  //     });
-  //   } catch (error) {
-  //     console.log(error);
-  //   } 
-  // };
-  if(loading){
-        console.log("loading is in progress",loading);
-      }
-      if(error){
-        console.log("error while getting usser",error);
-      }
-      if(user){
-        console.log("this is my user",user)
-      }
+  const [user] = useAuthState(auth);
+  const dispatch = useDispatch();
+  const count = useSelector(selectCount);
   const signout = () => {
     console.log("signout");
     try {
@@ -37,6 +22,25 @@ function Header() {
       });
     } catch (error) {
       console.log(error);
+    }
+  };
+  useEffect(() => {
+    console.log("useEffect", user);
+    if (count == null) {
+      handel(user);
+    }
+    console.log("this is a count", count);
+  }, [user]);
+
+  const handel = async (user) => {
+    const docRef = doc(db, "users", user.uid);
+    const docSnap = await getDoc(docRef);
+    if (docSnap.exists()) {
+      console.log("Document data:", docSnap.data());
+      dispatch(setUser(docSnap.data()));
+    } else {
+      // doc.data() will be undefined in this case
+      console.log("No such document!");
     }
   };
   return (
@@ -75,27 +79,38 @@ function Header() {
               </ul>
             </div>
             <div className="space-x-10 flex">
-              {user == null? (
+              {user == null ? (
                 <>
-                <Link className="px-3 bg-white text-black rounded-full"
-                to="/signin">Sign in</Link>
-                <Link className="px-3 bg-white text-black rounded-full"
-                to="/signup">Sign up</Link>
+                  <Link
+                    className="px-3 bg-white text-black rounded-full"
+                    to="/signin"
+                  >
+                    Sign in
+                  </Link>
+                  <Link
+                    className="px-3 bg-white text-black rounded-full"
+                    to="/signup"
+                  >
+                    Sign up
+                  </Link>
                 </>
-                
-                
               ) : (
-                <button
-                  className="px-3 bg-white text-black rounded-full"
-                  onClick={signout}
-                >
-                  Sign out
-                </button>
+                <>
+                  <Link
+                    className="px-3 bg-white text-black rounded-full"
+                    to="/karan"
+                  >
+                    home
+                  </Link>
+                  <button
+                    className="px-3 bg-white text-black rounded-full"
+                    onClick={signout}
+                  >
+                    Sign out
+                  </button>
+                </>
               )}
-              <MenuIcon
-                className="flex lg:hidden"
-                
-              />
+              <MenuIcon className="flex lg:hidden" />
             </div>
           </nav>
         </section>
@@ -2035,7 +2050,7 @@ function Header() {
           />
         </svg>
       </header>
-      <HandelInformation/>
+      <HandelInformation />
     </>
   );
 }

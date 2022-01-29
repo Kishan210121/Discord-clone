@@ -1,27 +1,22 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import Slidbar from "./Slidbar";
 import Chat from "./Chat";
 // import { useNavigate } from "react-router-dom";
 // import React, { useEffect,useState } from "react";
-// import {db} from "../firebase"
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../firebase";
 import { auth } from "../firebase";
 
 function Home() {
   // const [myloading, setloading] = useState(false);
-  const [user, loading, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   // let navigate = useNavigate();
-  let myloading=false;
-  if (loading) {
-    console.log("loading is in progress", loading);
-  }
-  if (error) {
-    console.log("error while getting usser", error);
-  }
-  if (user) {
-    console.log("this is my user", user);
-  }
-  
+  let myloading = false;
+  useEffect(() => {
+    console.log("user from home useEffect", user);
+  }, [user]);
+
   return (
     <div className="flex h-screen w-screen">
       {myloading ? (

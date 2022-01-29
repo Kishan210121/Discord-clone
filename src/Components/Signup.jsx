@@ -19,6 +19,7 @@ function Signup() {
         const user = userCredential.user;
         let obj = {
           Name: name,
+          emailId: user.email,
           userId: user.uid,
           userRoomsIds: [],
           OtherRoomIds: [],
@@ -68,7 +69,13 @@ function Signup() {
       <button onClick={handelsignup}>sign up</button>
       <br />
       <br />
-      <button onClick={()=>{console.log(count)}}>show me </button>
+      <button
+        onClick={() => {
+          console.log(count);
+        }}
+      >
+        show me{" "}
+      </button>
     </div>
   );
 }
