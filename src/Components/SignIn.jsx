@@ -12,6 +12,7 @@ function Signin() {
         .then((userCredential) => {
             // Signed in 
             const user = userCredential.user;
+            
             console.log(user);
             navigation("/karan")
             

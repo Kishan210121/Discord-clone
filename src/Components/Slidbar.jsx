@@ -1,16 +1,16 @@
 import React from 'react';
 import { PlusIcon,ChevronRightIcon} from '@heroicons/react/solid'
-import { db } from '../firebase';
-import { collection, addDoc,setDoc,doc  } from "firebase/firestore"; 
+// import { db } from '../firebase';
+// import { collection, addDoc,setDoc,doc  } from "firebase/firestore"; 
 
 import Rooms from './Rooms';
 function Slidbar() {
   const addchannel=async()=>{
-    const name = prompt ('What the name of your chanel?'); 
-    let data={
-      name:name,
-      rollno:34
-    }
+    // const name = prompt ('What the name of your chanel?'); 
+    // let data={
+    //   name:name,
+    //   rollno:34
+    // }
   }
   return <div className='flextwo'>
     <div className='flex'>

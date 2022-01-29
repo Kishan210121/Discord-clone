@@ -1,24 +1,25 @@
-import React, { useState,useEffect } from "react";
+import React  from "react";
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { MenuIcon } from "@heroicons/react/solid";
-import { auth, provider } from "../firebase";
-import { signInWithPopup} from "firebase/auth";
+import { auth } from "../firebase";
+// import { provider } from "../firebase";
+// import { signInWithPopup} from "firebase/auth";
 import HandelInformation from "./HandelInformation"
 import {Link} from "react-router-dom"
 function Header() {
   const [user, loading, error] = useAuthState(auth);
-  let navigate = useNavigate();
-  const signIn = (e) => {
-    e.preventDefault();
-    try {
-      signInWithPopup(auth, provider).then((details) => {
-        navigate("/karan");
-      });
-    } catch (error) {
-      console.log(error);
-    } 
-  };
+  // let navigate = useNavigate();
+  // const signIn = (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     signInWithPopup(auth, provider).then((details) => {
+  //       navigate("/karan");
+  //     });
+  //   } catch (error) {
+  //     console.log(error);
+  //   } 
+  // };
   if(loading){
         console.log("loading is in progress",loading);
       }

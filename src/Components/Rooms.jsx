@@ -4,7 +4,7 @@ import { auth, db } from '../firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { doc, updateDoc } from "firebase/firestore"; 
 function Rooms() {
-  const [user,loading,error]=useAuthState(auth);
+  const [user]=useAuthState(auth);
   const handelrooms=async ()=>{
     const roomname=prompt("enter the name of your room")
     if(user && roomname){
