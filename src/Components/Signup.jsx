@@ -21,8 +21,6 @@ function Signup() {
           Name: name,
           emailId: user.email,
           userId: user.uid,
-          userRoomsIds: [],
-          OtherRoomIds: [],
         };
         dispatch(setUser(obj));
         AddUserInFirebase(user, obj);

@@ -6,52 +6,71 @@ import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser, selectCount } from "../features/user/userSlice";
 import { selectRoom, currentroom } from "../features/Rooms/roomSlice";
+// import { collection } from "firebase/firestore";
+import { useCollection } from "react-firebase-hooks/firestore";
 function Rooms() {
   const [user] = useAuthState(auth);
   const count = useSelector(selectCount);
   const reduxroom = useSelector(selectRoom);
   const [roomNames, setroomNames] = useState([]);
+  const [value] = useCollection(
+    collection(db, "Globel-rooms", user.uid, "My-rooms"),
+    {
+      snapshotListenOptions: { includeMetadataChanges: true },
+    }
+  );
   const dispatch = useDispatch();
   const handelrooms = async () => {
     const roomname = prompt("enter the name of your room");
     if (user && roomname) {
       try {
         console.log("this is a RoomsID", count.userRoomsIds);
-        const docRef = await addDoc(collection(db, "rooms"), {
-          ownerId: user.uid,
-          RoomName: roomname,
-          channelIds: [],
-        });
-        await updateDoc(doc(db, "users", user.uid), {
-          userRoomsIds: [...count.userRoomsIds, docRef.id],
-        });
-        const unsub = onSnapshot(doc(db, "users", user.uid), (doc) => {
-          dispatch(setUser(doc.data()));
-        });
-        console.log(unsub);
+        const docRlogef = await addDoc(
+          collection(db, "Globel-rooms", user.uid, "My-rooms"),
+          {
+            ownerId: user.uid,
+            RoomName: roomname,
+            RoomId: "",
+          }
+        );
+        updaterooms(docRlogef.id);
+        // const unsub = onSnapshot(doc(db, "users", user.uid), (doc) => {
+        //   dispatch(setUser(doc.data()));
+        // });
       } catch (e) {
         console.error("Error adding document: ", e);
       }
-      console.log(user.uid);
+      // console.log(user.uid);
     }
   };
-  const ShowChannels = (data) => {
-    console.log("data from show channels", data.data.channelIds, data);
-    dispatch(currentroom(data.data));
+  const updaterooms = async (id) => {
+    console.log("update call hua", id);
+    let data = await updateDoc(
+      doc(db, "Globel-rooms", user.uid, "My-rooms", id),
+      {
+        RoomId: id,
+      }
+    );
+    console.log("this is I am trying to get", data);
   };
-  useEffect(() => {
-    let arr = {};
-    setroomNames([]);
-    count.userRoomsIds.forEach(async (id) => {
-      let data = await getDoc(doc(db, "rooms", id));
-      console.log(data.data().RoomName);
-      let roomname = data.data();
-      setroomNames((state) => [...state, roomname]);
-    });
-    console.log(arr);
-  }, [count]);
+  const ShowChannels = (data) => {};
+  const setCurrentRoom = (data) => {
+    console.log("data from show channels", data);
+    dispatch(currentroom(data));
+  };
+  // useEffect(() => {
+  //   let arr = {};
+  //   setroomNames([]);
+  //   count.userRoomsIds.forEach(async (id) => {
+  //     let data = await getDoc(doc(db, "rooms", id));
+  //     console.log(data.data().RoomName);
+  //     let roomname = data.data();
+  //     setroomNames((state) => [...state, roomname]);
+  //   });
+  //   console.log(arr);
+  // }, [count]);
   return (
-    <div className="flex">
+    <div className="flex flex-col">
       <button onClick={handelrooms}>add</button>
 
       <button
@@ -61,20 +80,27 @@ function Rooms() {
       >
         check
       </button>
-      {roomNames.map((data) => (
-        <>
-          <button onClick={() => ShowChannels({ data })}>
-            {data.RoomName}
-          </button>
-        </>
-      ))}
+      {value &&
+        value.docs.map((doc) => (
+          <div
+            className="roomDiv m-1"
+            onClick={() => setCurrentRoom(doc.data())}
+          >
+            {" "}
+            {doc.data().RoomName}
+          </div>
+        ))}
       <br />
       <br />
       <br />
       <br />
-      <button onClick={() => {
-        console.log(reduxroom)
-        }}>show redux user</button>
+      <button
+        onClick={() => {
+          console.log(reduxroom);
+        }}
+      >
+        show redux user
+      </button>
     </div>
   );
 }

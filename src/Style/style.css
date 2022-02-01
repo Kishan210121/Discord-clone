@@ -1,19 +1,28 @@
 .HomelastButton {
-    background-color: blue; 
-    border-radius: 3rem;
-    padding: 1rem 6rem;
-    margin: auto;
-    display: block;
-    margin: auto;
-     margin-top: 1rem;
+  background-color: blue;
+  border-radius: 3rem;
+  padding: 1rem 6rem;
+  margin: auto;
+  display: block;
+  margin: auto;
+  margin-top: 1rem;
 }
-.flextwo{
-    flex: 0.2;
+.flextwo {
+  flex: 0.2;
 }
-.flexOne{
-    flex: 0.1;
+.flexOne {
+  flex: 0.1;
 }
-.flexteight{
-    background-color: red;
-    flex: 0.8;
+.flexteight {
+  background-color: red;
+  flex: 0.8;
+}
+.roomDiv {
+  background-color: green;
+  border-radius: 50%;
+  height: 4rem;
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

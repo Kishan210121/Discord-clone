@@ -10,13 +10,13 @@ import {getFirestore} from "firebase/firestore"
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDY25LXrV7Yd_tVUhx0kabDFQlCy7dm-wI",
-  authDomain: "my-discord-3c185.firebaseapp.com",
-  projectId: "my-discord-3c185",
-  storageBucket: "my-discord-3c185.appspot.com",
-  messagingSenderId: "107094610533",
-  appId: "1:107094610533:web:0304af0f65df6661032c8c",
-  measurementId: "G-NPT8FT65KK"
+  apiKey: "AIzaSyB8uOBNz7FRJ7yoyk1HQA0Gem03RmahhN4",
+  authDomain: "discord-2-8f689.firebaseapp.com",
+  projectId: "discord-2-8f689",
+  storageBucket: "discord-2-8f689.appspot.com",
+  messagingSenderId: "995921474689",
+  appId: "1:995921474689:web:e6036fb272bc5c96fb8980",
+  measurementId: "G-NYSMSYTGM7",
 };
 
 // Initialize Firebase
