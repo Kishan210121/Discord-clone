@@ -13,9 +13,8 @@ function Slidbar() {
      <div className="flexteight h-full w-full flex justify-between items-center">
        <div className="h-screen w-full flex flex-col">
         <div className="flexOne">top</div>
-        <div className='w-full  flexteight'>
-        <div className='w-full flex bg-gray-500 justify-between items-center'>
-         <div className='flex items-center'><ChevronRightIcon className='h-5 inline '/>#Text Channels</div>
+        <div className='w-full   flexteight'>
+        <div className='w-full h-full flex bg-gray-500 justify-between items-center'>
               <Channel></Channel>
           </div>
         </div>

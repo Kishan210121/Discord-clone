@@ -3,7 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const slice = createSlice({
   name: "Currentroom",
   initialState: {
-    value: null,
+    value: {
+      RoomId:"12345",
+      RoomName:"",
+      ownerId:""
+    },
   },
   reducers: {
     currentroom: (state, action) => {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser, selectCount } from "../features/user/userSlice";
+// import { selectRoom } from "../features/Rooms/roomSlice";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 // import { increment, decrement,selectCount } from "../features/user/userSlice.js"

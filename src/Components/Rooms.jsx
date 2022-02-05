@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { collection, addDoc, getDoc } from "firebase/firestore";
+import { collection, addDoc, getDocs  } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { doc, updateDoc, onSnapshot } from "firebase/firestore";
@@ -19,6 +19,14 @@ function Rooms() {
       snapshotListenOptions: { includeMetadataChanges: true },
     }
   );
+  // let obj={
+  //           ownerId: user.uid,
+  //           RoomName: roomname,
+  //           RoomId: "",
+  // }
+  // console.log(value)
+      // dispatch(currentroom());
+
   const dispatch = useDispatch();
   const handelrooms = async () => {
     const roomname = prompt("enter the name of your room");
@@ -58,17 +66,16 @@ function Rooms() {
     console.log("data from show channels", data);
     dispatch(currentroom(data));
   };
-  // useEffect(() => {
-  //   let arr = {};
-  //   setroomNames([]);
-  //   count.userRoomsIds.forEach(async (id) => {
-  //     let data = await getDoc(doc(db, "rooms", id));
-  //     console.log(data.data().RoomName);
-  //     let roomname = data.data();
-  //     setroomNames((state) => [...state, roomname]);
-  //   });
-  //   console.log(arr);
-  // }, [count]);
+  useEffect(() => {
+    setRoomoOnloading();
+   
+  }, []);
+  const setRoomoOnloading=async()=>{
+    console.log("function is calling")
+    const document=await getDocs(collection(db, "Globel-rooms", user.uid, "My-rooms"));
+    const obj=document.docs[0].data();
+    dispatch(setCurrentRoom(obj))
+  }
   return (
     <div className="flex flex-col">
       <button onClick={handelrooms}>add</button>
@@ -76,6 +83,7 @@ function Rooms() {
       <button
         onClick={() => {
           console.log(roomNames);
+          console.log(value.docs.data())
         }}
       >
         check
