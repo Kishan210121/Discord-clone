@@ -6,6 +6,8 @@ import { doc, updateDoc, onSnapshot } from "firebase/firestore";
 import { useSelector, useDispatch } from "react-redux";
 import { setUser, selectCount } from "../features/user/userSlice";
 import { selectRoom, currentroom } from "../features/Rooms/roomSlice";
+import { PlusIcon, ChevronRightIcon } from "@heroicons/react/solid";
+import discordLogo from "../Assests/Discord-Logo.png"
 // import { collection } from "firebase/firestore";
 import { useCollection } from "react-firebase-hooks/firestore";
 function Rooms() {
@@ -77,31 +79,28 @@ function Rooms() {
     dispatch(setCurrentRoom(obj))
   }
   return (
-    <div className="flex flex-col">
-      <button onClick={handelrooms}>add</button>
-
-      <button
-        onClick={() => {
-          console.log(roomNames);
-          console.log(value.docs.data())
-        }}
-      >
-        check
-      </button>
+    <div className="flex flex-col px-2 py-2 align-center" >
+      <div
+            className="roomDiv mx room-icons my-2 roomHeaderDiv Discord-logo"
+          >
+            <img src={discordLogo} alt="DH" />
+      </div>
       {value &&
         value.docs.map((doc) => (
           <div
-            className="roomDiv m-1"
+            className="roomDiv mx-1 my-2 room-icons "
             onClick={() => setCurrentRoom(doc.data())}
           >
             {" "}
-            {doc.data().RoomName}
+            {doc.data().RoomName.substring(0,2)}
           </div>
         ))}
-      <br />
-      <br />
-      <br />
-      <br />
+        <div
+            className="roomDiv mx room-icons my-2 roomHeaderDiv"
+            onClick={() => handelrooms()}
+          >
+            <PlusIcon className=" w-8 fill-blue-700 hover:fill-slate-100"/>
+          </div>
       <button
         onClick={() => {
           console.log(reduxroom);

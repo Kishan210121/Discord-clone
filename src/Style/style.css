@@ -18,11 +18,40 @@
   flex: 0.8;
 }
 .roomDiv {
-  background-color: green;
   border-radius: 50%;
-  height: 4rem;
-  width: 4rem;
+  height: 3.3rem;
+  width: 3.3rem;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.rooms-section{
+  background-color: hsl(216deg 7% 14%);
+}
+.room-icons{
+  /* background-color: hsl(220deg 51% 75%); */
+  background-color: hsl(220deg 4% 23%);
+  color: #dacaca;
+    font-weight: 600;
+    font-family: -webkit-pictograph;
+}
+.room-icons:hover{
+    background-color: rgb(54, 34, 240);
+    border-radius: 1rem;
+    color: #dacaca;
+    font-weight: 600;
+    font-family: -webkit-pictograph;
+    transition: 0.3s ease-in-out;
+}
+.roomHeaderDiv:hover >svg{
+  fill: rgb(223, 236, 236);
+  transition: 0.3s ease-in-out;
+}
+.align-center{
+  align-items: center;
+}
+.Discord-logo:hover{
+  background-color: rgb(32, 36, 30);
+  border-radius: 1rem;
+  transition: 0.3s ease-in-out;
 }

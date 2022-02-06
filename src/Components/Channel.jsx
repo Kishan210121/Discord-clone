@@ -20,14 +20,16 @@ function Channel() {
   const addchannel = async () => {
     const promptname = prompt("What the name of your chanel?");
     console.log("add channel", room.RoomId);
-    const docref = await addDoc(
-      collection(db, "Globel-Channels", room.RoomId, "Channels"),
-      {
-        ChannelName: promptname,
-        ChannelId: "",
+    if(promptname){
+        const docref = await addDoc(
+          collection(db, "Globel-Channels", room.RoomId, "Channels"),
+          {
+            ChannelName: promptname,
+            ChannelId: "",
+          }
+          );
+          handeUpdate(docref.id);
       }
-    );
-    handeUpdate(docref.id);
   };
   const handeUpdate = async (id) => {
     console.log("update call hua", id);

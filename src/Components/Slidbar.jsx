@@ -7,7 +7,7 @@ import Rooms from './Rooms';
 function Slidbar() {
   return <div className='flextwo'>
     <div className='flex'>
-    <div className="flextwo bg-slate-200">
+    <div className="flextwo rooms-section">
       <Rooms/>
     </div>
      <div className="flexteight h-full w-full flex justify-between items-center">

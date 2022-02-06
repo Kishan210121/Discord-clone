@@ -20,7 +20,7 @@ function Chat() {
     });
     console.log("Document written with ID: ", docRef.id);
   }
-  return <div className='flexteight'>this is chat room
+  return <div className='flexteight flex'>this is chat room
    <input type="text" placeholder='enter a message' onChange={(e)=>setmessage(e.target.value)}/>
    <button onClick={handelsend}>send</button>
   </div>;
